@@ -1,0 +1,25 @@
+brand_name,geo_market,exclusion_reason,evidence_url
+Sorriso,USA,Brazil-only Colgate toothpaste brand; no US retail listing found in Walmart's toothpaste-by-brand index.,https://www.walmart.com/cp/toothpaste-by-brand/9965224
+Sorriso,Canada,Brazil-only brand; named in the 10-K brand list but not sold in Canada.,https://investor.colgatepalmolive.com/static-files/c4a7e20c-1aa8-4bb1-bd4b-74755c99688f
+Colgate Duraphat,USA,Not marketed to US consumers; the US high-fluoride equivalent is PreviDent.,https://www.colgate.com/en-us/prevident
+Colgate Duraphat,Canada,Health Canada DIN 02232201 status 'Cancelled Pre Market' since 2017-08-31.,https://dhpp.hpfb-dgpsa.ca/dhpp/resource/51727
+Sanex,USA,No company distribution; Europe-managed brand with third-party import listings only.,https://www.amazon.ca/Sanex-Zero-Skin-Shower-250Ml/dp/B00BM64L60
+Sanex,Canada,No company distribution; only a third-party Amazon.ca import listing found.,https://www.amazon.ca/Sanex-Zero-Skin-Shower-250Ml/dp/B00BM64L60
+Protex,USA,No company distribution; the only US listing is an out-of-stock Walmart marketplace multipack.,https://www.walmart.com/ip/Protex-Bar-Soap-Oats-for-Both-Men-and-Women-Adults-and-Children-3-12-Pack-3-7-oz/2825426583
+Protex,Canada,No Canadian retail listing found; brand is managed for Latin America.,https://www.colgatepalmolive.com/en-us/guatemala/csfeed/0099176922780
+elmex,USA,No company distribution; Walmart marketplace import from third-party seller ChePha only.,https://www.walmart.com/ip/Elmex-Sensitive-Professional-75ml/184462547
+elmex,Canada,No company distribution; Amazon.ca third-party import sellers (mfr GABA) only.,https://www.amazon.ca/Elmex-sensitiv-professional-toothpaste-Health/dp/B0041M3L0Y
+meridol,USA,No company distribution; Walmart marketplace import from seller iogga Co only.,https://www.walmart.com/ip/Meridol-Pur-Toothpaste-2-x-75ml/596602236
+meridol,Canada,No company distribution; German-sourced Amazon.ca import listings only.,https://www.amazon.ca/Authentic-German-Gaba-Meridol-Toothpaste/dp/B000WHQEDS
+Palmolive (personal care),USA,"Palmolive personal-care (bar soap, shower gel, shampoo) is a non-US line; palmolive.com/en-us carries dish only.",https://www.palmolive.com/en-us
+Palmolive (personal care),Canada,No Canadian personal-care Palmolive listing found; Canadian brand site is dish only.,https://www.palmolive.com/en-ca
+Arctic Power,USA,Canada-only laundry brand; absent from the US corporate brand roster.,https://www.colgatepalmolive.com/en-us
+Axion,Canada,No Canadian retail listing confirmed; brand core markets are Latin America.,https://investor.colgatepalmolive.com/static-files/c4a7e20c-1aa8-4bb1-bd4b-74755c99688f
+Ultra Brite,Canada,No Canadian retail distribution confirmed; only cross-border marketplace/eBay import listings found.,https://www.ebay.ca/itm/115235074163
+Colgate Renewal,USA,Standalone US line listed as 'currently unavailable' on Amazon; equity consolidated into Optic White.,https://www.amazon.com/Colgate-Renewal-Toothpaste-Enamel-Fortify/dp/B08P3HX4QB
+Colgate hum,Canada,No Canadian retail listing confirmed for the connected-brush line.,https://shop.colgate.com/products/hum-adult-smart-toothbrush-replacement-brush-heads
+Afta,Canada,No Canadian retail listing found for the Mennen pre-electric shave lotion.,https://www.kroger.com/p/afta-pre-electric-by-mennen-original-scent-shave-lotion/0002220000276
+Fleecy,USA,Listed on the US corporate roster but no US retail listing confirmed.,https://www.colgatepalmolive.com/en-us
+Hill's Bioactive Recipe,Canada,Canadian availability not confirmed; line appears only on US Hill's/Chewy listings.,https://www.chewy.com/brands/hills-6874
+Hill's Healthy Advantage,Canada,Canadian availability not confirmed; vet-channel line evidenced in the US only.,https://www.chewy.com/brands/hills-6874
+Prime100,Canada,Canadian availability not confirmed; US distribution is select north-east pet specialty only.,https://prime100.com/pages/where-to-buy

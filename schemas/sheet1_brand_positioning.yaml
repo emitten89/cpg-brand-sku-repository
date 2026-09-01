@@ -1,0 +1,75 @@
+# Sheet 1 — CPG Brand & Positioning Repository
+# Canonical schema. Client-agnostic. Do not reorder columns between runs.
+schema_version: "1.0"
+sheet_name: "Brand Positioning"
+grain: "one row per brand x geo_market"
+columns:
+  - name: record_id
+    type: string
+    desc: "Stable key: {CLIENT_SLUG}-{BRAND_SLUG}-{GEO}. Primary key across runs."
+  - name: geo_market
+    type: enum
+    values: [USA, Canada]
+  - name: reporting_segment
+    type: string
+    desc: "Client's own reported segment, verbatim from the 10-K."
+  - name: category
+    type: string
+  - name: sub_category
+    type: string
+  - name: brand_name
+    type: string
+  - name: parent_brand
+    type: string
+    desc: "Empty if brand is top-level; else the master brand it ladders to."
+  - name: est_annual_net_sales_usd_mm
+    type: number
+    modeled: true
+  - name: sales_estimate_method
+    type: string
+    desc: "Which allocation path produced the number. See scripts/estimate_engine.py"
+  - name: pct_sales_instore
+    type: percent
+    modeled: true
+  - name: pct_sales_online
+    type: percent
+    modeled: true
+  - name: top_retailers_ranked
+    type: string
+    desc: "Pipe-delimited, ranked."
+  - name: est_retailer_spend_usd_mm
+    type: string
+    desc: "Pipe-delimited, index-aligned to top_retailers_ranked."
+  - name: est_marketing_spend_usd_mm
+    type: number
+    modeled: true
+  - name: marketing_spend_pct_of_sales
+    type: percent
+  - name: share_of_market_pct
+    type: percent
+    desc: "Brand sales / total client sales in that geo."
+  - name: share_of_category_pct
+    type: percent
+    desc: "Brand sales / total category sales in that geo."
+  - name: brand_assets_url
+    type: url
+  - name: marketing_themes
+    type: string
+  - name: brand_sentiment_today
+    type: string
+  - name: q4_focus_defend_or_win
+    type: string
+  - name: innovation_areas
+    type: string
+  - name: source_type
+    type: enum
+    values: [Reported, Derived, Modeled, Mixed]
+    desc: "Reported = stated in a filing or press release. Derived = arithmetic on reported figures. Modeled = allocation estimate."
+  - name: confidence
+    type: enum
+    values: [High, Medium, Low]
+  - name: primary_sources
+    type: string
+    desc: "Pipe-delimited URLs."
+  - name: date_collected
+    type: date

@@ -1,0 +1,318 @@
+parameter,brand_or_scope,value,rationale,confidence
+ca_share (country_split),All Colgate North America pools,0.093,"estimate_engine default: Canada is ~11.5% of US+Canada population, discounted for lower per-capita CPG spend and a materially narrower Canadian assortment (the Canadian roster omits Fabuloso-scale US value brands and all US-only tail brands).",Medium
+North America OPHC pool,"Colgate USA + Canada (Oral, Personal and Home Care)",4045 USD mm,"Reported FY2025 North America division net sales from the 10-K. Note this division line covers Oral, Personal and Home Care only; Hill's North America sits inside the separate $4,613M Pet Nutrition segment.",High
+USA OPHC pool,Colgate USA,3668.8 USD mm,"country_split(4045, 0.093).",Medium
+Canada OPHC pool,Colgate Canada,376.2 USD mm,"country_split(4045, 0.093).",Medium
+hills_na_share_of_global,Hill's Pet Nutrition North America,0.689,"Chosen so that Hill's USA = 62.5% of global Hill's net sales, the midpoint of the 60-65% US range used in the brief; the remaining 6.4 pts of the NA figure are Canada at the same 9.3% country split. Hill's NA pool = 4,613 x 0.689 = 3,178M.",Low
+Hill's USA pool,Hill's Pet Nutrition USA,2882.8 USD mm,"country_split(Hill's NA 3,178M, 0.093) -> 62.5% of the reported $4,613M global Pet Nutrition segment.",Low
+Hill's Canada pool,Hill's Pet Nutrition Canada,295.6 USD mm,"country_split(Hill's NA 3,178M, 0.093).",Low
+category_weight Oral Care,Colgate USA OPHC,0.47,"Worldwide mix is Oral 44% / Personal 17% / Home 16% of net sales (57/22/21 within OPHC). North America is de-indexed on oral versus emerging markets, where Colgate toothpaste dominates the basket, so oral is set below the worldwide OPHC share.",Low
+category_weight Personal Care,Colgate USA OPHC,0.2,"Worldwide personal care is 22% of OPHC; the North America personal-care set (Speed Stick, Lady Speed Stick, Softsoap, Irish Spring, Mennen) is broad but value-priced, and skin health is carved out separately, so the residual is set just under the worldwide share.",Low
+category_weight Skin Care,Colgate USA OPHC,0.08,"Carve-out of the skin-health brands (EltaMD, PCA SKIN, Filorga) that Colgate reports inside Personal Care. EltaMD + PCA SKIN were ~$100M combined net sales at the 2017 acquisition and are repeatedly cited as premium growth drivers, so the implied US skin pool of ~$294M is a growth-consistent 2026 level. Canada de-indexed because Filorga is the only broadly distributed line.",Low
+category_weight Home Care,Colgate USA OPHC,0.25,"North America over-indexes on home care versus the worldwide 21% of OPHC: Fabuloso is the company-stated #1 US all-purpose pour cleaner, Palmolive dish and Suavitel are US scale franchises, and Canada adds two Canada-only laundry/fabric brands (Arctic Power, Fleecy), hence the higher Canadian weight.",Low
+category_pool USA,Colgate USA,Oral Care=1724.3; Personal Care=733.8; Skin Care=293.5; Home Care=917.2; Pet Nutrition=2882.8,"Category pools in USD mm after country_split and category weighting. allocate_category normalizes brand weights within each pool, so brand estimates sum exactly to the pool.",Medium
+category_weight Oral Care,Colgate Canada OPHC,0.45,"Worldwide mix is Oral 44% / Personal 17% / Home 16% of net sales (57/22/21 within OPHC). North America is de-indexed on oral versus emerging markets, where Colgate toothpaste dominates the basket, so oral is set below the worldwide OPHC share.",Low
+category_weight Personal Care,Colgate Canada OPHC,0.19,"Worldwide personal care is 22% of OPHC; the North America personal-care set (Speed Stick, Lady Speed Stick, Softsoap, Irish Spring, Mennen) is broad but value-priced, and skin health is carved out separately, so the residual is set just under the worldwide share.",Low
+category_weight Skin Care,Colgate Canada OPHC,0.06,"Carve-out of the skin-health brands (EltaMD, PCA SKIN, Filorga) that Colgate reports inside Personal Care. EltaMD + PCA SKIN were ~$100M combined net sales at the 2017 acquisition and are repeatedly cited as premium growth drivers, so the implied US skin pool of ~$294M is a growth-consistent 2026 level. Canada de-indexed because Filorga is the only broadly distributed line.",Low
+category_weight Home Care,Colgate Canada OPHC,0.3,"North America over-indexes on home care versus the worldwide 21% of OPHC: Fabuloso is the company-stated #1 US all-purpose pour cleaner, Palmolive dish and Suavitel are US scale franchises, and Canada adds two Canada-only laundry/fabric brands (Arctic Power, Fleecy), hence the higher Canadian weight.",Low
+category_pool Canada,Colgate Canada,Oral Care=169.3; Personal Care=71.5; Skin Care=22.6; Home Care=112.9; Pet Nutrition=295.6,"Category pools in USD mm after country_split and category weighting. allocate_category normalizes brand weights within each pool, so brand estimates sum exactly to the pool.",Medium
+ALPHA (sku elasticity),All brands,0.72,estimate_engine default: SKU count has diminishing returns on revenue.,Medium
+BETA (price elasticity),All brands,0.45,estimate_engine default: premium price only partially converts to revenue share given lower unit velocity.,Medium
+NA advertising intensity uplift,USA and Canada ad pools,1.1,"Worldwide advertising was $2,703M in FY2025 and Q2 2026 hit a record 14.5% of sales with management explicitly stepping up North America spend behind price-gap management; the geo ad pool is therefore set 10% above the geo's pro-rata share of worldwide sales.",Low
+Colgate sub-brand treatment,Colgate USA and Canada sub-brands,component rows,"Sub-brand rows (Total, Optic White, Max Fresh, Sensitive, PreviDent, PerioGard, hum, Optic White Renewal) are allocated inside the Colgate master estimate using empirical portfolio SKU counts from Sheet 2. They are components of the master row and are excluded from geo totals to avoid double counting; unnamed portfolios (Kids, 360, Cavity Protection and others) remain inside the master row.",Medium
+Reported share override,Colgate master USA,31.9%,US toothpaste value share 31.9% YTD as of 2Q 2026 (33.3% FY2025) is used verbatim for share_of_category_pct on the Colgate USA master row and the row is flagged Reported. US manual toothbrush share 43.4% YTD is recorded here as the second reported anchor.,High
+Skin Care channel split,All skin-care rows,48% online (x0.78 in Canada),estimate_engine channel_split benchmark for DTC/Amazon-skewed skin care; consistent with EltaMD selling through 15 authorized online retailers plus DTC and with Filorga Canada being DTC-plus-Walmart.,Low
+Pet Nutrition channel split,All Hill's / Prime100 rows,38% online (x0.78 in Canada),"estimate_engine benchmark, corroborated by US pet food at 35.6% online in 2025 with Amazon at 42.2% of online pet sales.",Medium
+Oral / Personal / Home channel splits,All OPHC rows,22% / 26% / 17% online,"estimate_engine benchmarks, corroborated by the research: US oral care online growing 8.55% CAGR with 38.62% of distribution in supermarkets, home cleaners 22-28% online, detergents 15-20% online.",Medium
+sku_count source,Oral and personal care brands,Sheet 2 SKU inventories,"Empirical counts from skus_oral_care.csv and skus_personal_care.csv (distinct rows per brand x geo), including per-portfolio counts used for the Colgate sub-brand split.",High
+sku_count source,Home care and pet nutrition brands,documented shelf estimates,"Home care and pet brands are not covered by the two SKU CSVs. Counts are read off the retailer brand pages cited in brands_positioning.md (e.g. Suavitel Canada = 6 SKUs on walmart.ca, Hill's Science Diet Canada = 208 PetSmart results, Hill's Prescription Diet Canada = 92 cat SKUs plus dog) and rounded assortment estimates elsewhere.",Low
+sku_count,Colgate (USA),733,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate (USA),1.0,"Index 1.00 by definition: Colgate is the category benchmark, with mass shelf prices of $1.99-$7.99 at Target and CAD $0.98-$5.97 at Walmart Canada.",Medium
+distribution_breadth,Colgate (USA),1.0,"1.00 - the only brand in the portfolio present at every tracked retailer (Walmart, Target, CVS, Amazon, DTC in the US; Walmart Canada, Well.ca, Amazon.ca in Canada).",Medium
+velocity_index,Colgate (USA),1.3,"1.25-1.30 - highest turn in the portfolio: reported 31.9% US toothpaste and 43.4% US manual toothbrush value share, and review counts up to 2,392 on a single Canadian brand page.",Medium
+ad_priority_multiplier,Colgate (USA),1.3,1.25-1.30 - management named North America oral care as the priority for stepped-up advertising and premium 2026/2027 innovation.,Medium
+sku_count,Colgate Total (USA),163,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Total (USA),1.1,1.10 - therapeutic tier priced above the Colgate core line at Target ($1.99-$7.99 range top end).,Medium
+distribution_breadth,Colgate Total (USA),1.0,"1.00 - full national distribution in both markets, including a CDA seal listing in Canada.",Medium
+velocity_index,Colgate Total (USA),1.05,1.05 - historically the largest single Colgate portfolio by SKU count (163 US SKUs) but currently rebuilding share after the reformulation issue.,Medium
+ad_priority_multiplier,Colgate Total (USA),1.3,1.25-1.30 - Total carries the flagship national creative ('One Step Ahead') and is the named share-recovery priority.,Medium
+sku_count,Colgate Optic White (USA),132,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Optic White (USA),1.35,1.35 - premium whitening tier; Pro Series is the most advanced (and highest-priced) formula in the line.,Medium
+distribution_breadth,Colgate Optic White (USA),0.95,0.95 - broad mass distribution but slightly narrower than the core line in drug/value channels.,Medium
+velocity_index,Colgate Optic White (USA),1.1,1.10 - whitening is the stated share-recovery vehicle and the second-largest Colgate portfolio by SKU count (132 US SKUs).,Medium
+ad_priority_multiplier,Colgate Optic White (USA),1.35,1.30-1.35 - 'The Science of WOW' campaign with 100+ assets plus the Purple and Vitamin C launches make this the most heavily supported sub-brand.,Medium
+sku_count,Colgate Max Fresh (USA),66,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Max Fresh (USA),0.95,0.95 - freshness workhorse priced at or just below the Colgate core line.,Medium
+distribution_breadth,Colgate Max Fresh (USA),0.9,0.90 - broad mass and drug distribution; fewer professional or premium doors.,Medium
+velocity_index,Colgate Max Fresh (USA),1.0,1.00 - steady mainstream turn with no adverse coverage; 66 US and 33 Canadian SKUs.,Medium
+ad_priority_multiplier,Colgate Max Fresh (USA),0.9,0.85-0.90 - a value-tier defence line rather than a named 2026 investment priority.,Medium
+sku_count,Colgate Sensitive (USA),26,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Sensitive (USA),1.45,1.45 - sensitivity toothpaste sells at a therapeutic premium ($8.99 two-pack at Target).,Medium
+distribution_breadth,Colgate Sensitive (USA),0.85,0.85 - present at mass and drug but with a narrower assortment than core toothpaste.,Medium
+velocity_index,Colgate Sensitive (USA),1.05,"1.05 - strong consumer pull: 4.66/5 from 1,570 Target reviews, the best-rated Colgate toothpaste set found.",Medium
+ad_priority_multiplier,Colgate Sensitive (USA),1.0,1.00 - part of the premium therapeutic slate but not a named lead campaign.,Medium
+sku_count,Colgate PreviDent (USA),19,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate PreviDent (USA),2.2,"2.20 - prescription 5000ppm product at roughly 4x the fluoride of OTC toothpaste, dispensed at Rx pricing.",Medium
+distribution_breadth,Colgate PreviDent (USA),0.35,0.35 - dental-professional and pharmacy channels only; no open-retail listing.,Medium
+velocity_index,Colgate PreviDent (USA),0.6,0.60 - low turn per door given prescription gating.,Medium
+ad_priority_multiplier,Colgate PreviDent (USA),0.6,0.60 - professional-channel detailing rather than consumer media.,Medium
+sku_count,Colgate PerioGard (USA),3,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate PerioGard (USA),2.0,"2.00 in the US (Rx chlorhexidine rinse) and 1.70 in Canada, where PerioGard/PerioGardSF is also sold as a consumer gum-health line.",Medium
+distribution_breadth,Colgate PerioGard (USA),0.3,0.30 US / 0.55 Canada - Rx-gated in the US; the Canadian line reaches retail and pharmacy as well as dental offices.,Medium
+velocity_index,Colgate PerioGard (USA),0.55,0.55-0.75 - low absolute turn but rising as the launch moves through distribution.,Medium
+ad_priority_multiplier,Colgate PerioGard (USA),0.7,"0.70 - launched 'through the profession' in 2026, so support is detailing-led, not mass media.",Medium
+sku_count,Colgate hum (USA),6,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate hum (USA),3.0,"3.00 - connected power brush hardware at $17.99 for replacement heads alone, far above manual oral care.",Medium
+distribution_breadth,Colgate hum (USA),0.2,"0.20 - DTC and Amazon only, with replacement heads already sold out.",Medium
+velocity_index,Colgate hum (USA),0.4,0.40 - wind-down: availability gaps and public discontinuation chatter suppress turn.,Medium
+ad_priority_multiplier,Colgate hum (USA),0.4,0.40 - absent from 2026 earnings materials; power emphasis has shifted to manual brushes and kids battery brushes.,Medium
+sku_count,Ultra Brite (USA),5,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Ultra Brite (USA),0.55,0.55 - value whitening tier; the lowest-priced toothpaste in the US portfolio.,Medium
+distribution_breadth,Ultra Brite (USA),0.45,"0.45 - Walmart and Amazon only, with no Canadian retail distribution.",Medium
+velocity_index,Ultra Brite (USA),0.6,0.60 - uneven ratings (3.7-5.0) and minimal support point to slow turn.,Medium
+ad_priority_multiplier,Ultra Brite (USA),0.35,"0.35 - no brand-specific 2026 activity found; a price-gap tier, not a media brand.",Medium
+sku_count,Tom's of Maine (USA),141,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Tom's of Maine (USA),1.3,1.30 - naturals premium at $4.47-$9.96 in the US and CAD $5.97-$11.97 in Canada versus mainstream toothpaste.,Medium
+distribution_breadth,Tom's of Maine (USA),0.7,0.70 US / 0.45 Canada - broad US mass plus health/specialty distribution; Canada is Walmart-led and much narrower.,Medium
+velocity_index,Tom's of Maine (USA),0.85,"0.85 US / 0.70 Canada - solid ratings (4.0-4.8, up to 1,921 reviews) but a specialty rather than mass turn rate.",Medium
+ad_priority_multiplier,Tom's of Maine (USA),1.05,"1.05 US / 0.90 Canada - 'Never Underestimate Nature' was the brand's first campaign in three years, so support is real but modest.",Medium
+sku_count,hello (USA),97,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,hello (USA),1.25,"1.25 - $2.49-$14.23 at Target and CAD $5.97-$9.98 at Walmart Canada, above private label and mainstream value toothpaste.",Medium
+distribution_breadth,hello (USA),0.6,"0.60 US / 0.40 Canada - Target/Walmart/Amazon in the US; Canada launched only in June 2025 at Shoppers, Walmart and Amazon.ca.",Medium
+velocity_index,hello (USA),0.9,0.90 US / 0.75 Canada - high cultural velocity for a small base; trade estimate of ~$40M sales at acquisition with 15% of sales online.,Medium
+ad_priority_multiplier,hello (USA),1.2,1.15-1.20 - influencer- and social-led investment with a named chief aura officer and the Whipped launch as a Q1 2026 North America priority.,Medium
+sku_count,Speed Stick (USA),60,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Speed Stick (USA),0.8,"0.80 - value men's deodorant at $4.69-$10.25 (US) and CAD $5.99-$13.49 (Canada), below premium deodorant benchmarks.",Medium
+distribution_breadth,Speed Stick (USA),0.95,"0.95 US / 0.90 Canada - near-universal mass, drug and grocery distribution in both markets.",Medium
+velocity_index,Speed Stick (USA),1.1,"1.05-1.10 - high-turn value staple: 4.4/5 from 1,388 ratings on the core Walmart SKU.",Medium
+ad_priority_multiplier,Speed Stick (USA),0.9,0.85-0.90 - no named 2026 campaign; personal care sits inside the general price-gap and advertising step-up.,Medium
+sku_count,Lady Speed Stick (USA),20,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Lady Speed Stick (USA),0.75,"0.75 - the lowest-priced deodorant line in the portfolio, from CAD $3.77.",Medium
+distribution_breadth,Lady Speed Stick (USA),0.8,0.80 - solid mass distribution but a narrower assortment than the men's line (19-20 SKUs per market).,Medium
+velocity_index,Lady Speed Stick (USA),0.85,0.85-0.90 - steady value turn with no adverse coverage and no campaign lift.,Medium
+ad_priority_multiplier,Lady Speed Stick (USA),0.6,0.60 - no dedicated 2025-2026 campaign found; maintained rather than invested.,Medium
+sku_count,Softsoap (USA),153,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Softsoap (USA),0.85,0.85 - value hand-wash pricing at $2.48-$12.12 (US) and CAD $4.28-$10.28 (Canada).,Medium
+distribution_breadth,Softsoap (USA),1.0,"1.00 US / 0.90 Canada - the widest personal-care distribution in the portfolio, with 153 US SKUs.",Medium
+velocity_index,Softsoap (USA),1.25,"1.10-1.25 - very high replenishment turn; ratings of 4.4-4.8 across review counts up to 6,575.",Medium
+ad_priority_multiplier,Softsoap (USA),0.95,"0.90-0.95 - supported through sustainability innovation (tablets, aluminium bottles) rather than heavy paid media.",Medium
+sku_count,Irish Spring (USA),58,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Irish Spring (USA),0.9,0.90 - mainstream bar-soap and body-wash pricing at CAD $5.97-$10.48.,Medium
+distribution_breadth,Irish Spring (USA),0.95,0.95 US / 0.85 Canada - broad mass and drug distribution; the US brand site was cookie-gated but trade press confirms national scale.,Medium
+velocity_index,Irish Spring (USA),1.15,"1.15 US / 1.30 Canada - very high turn, with individual Canadian SKUs carrying up to 4,736 reviews.",Medium
+ad_priority_multiplier,Irish Spring (USA),1.2,"1.10-1.20 - the brand bought its first Super Bowl ad (reported $6.5M per unit) behind a full relaunch, the clearest paid-media signal in personal care.",Medium
+sku_count,Skin Bracer (USA),2,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Skin Bracer (USA),0.7,"0.70 - heritage aftershave at CAD $10.99 for 100ml, a small-basket value item.",Medium
+distribution_breadth,Skin Bracer (USA),0.3,"0.25-0.30 - CVS, Amazon and independent grocery only, with forum chatter about discontinuation indicating patchy shelf presence.",Medium
+velocity_index,Skin Bracer (USA),0.55,0.50-0.55 - loyal but small base (4.8/5 from 89 CVS reviews; 4.7/5 from 804 Amazon.ca ratings).,Medium
+ad_priority_multiplier,Skin Bracer (USA),0.3,0.30 - no company marketing activity found in fetched sources.,Medium
+sku_count,Afta (USA),2,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Afta (USA),0.7,0.70 - legacy pre-electric shave lotion at grocery price points.,Medium
+distribution_breadth,Afta (USA),0.15,0.15 - a single confirmed US grocery listing (Kroger) and no Canadian listing.,Medium
+velocity_index,Afta (USA),0.35,"0.35 - one retailer review in total, indicating negligible turn.",Medium
+ad_priority_multiplier,Afta (USA),0.25,0.25 - no marketing activity found; a harvest brand.,Medium
+sku_count,EltaMD (USA),108,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,EltaMD (USA),2.6,"2.60 - professional sunscreen at CAD $68-$82 per unit, roughly 3x mass sun care.",Medium
+distribution_breadth,EltaMD (USA),0.75,"0.75 US / 0.55 Canada - physician offices, DTC, Dermstore and 15 authorized online retailers in the US; Amazon.ca plus professional e-tailers in Canada.",Medium
+velocity_index,EltaMD (USA),1.4,"1.30-1.40 - exceptional turn for a premium brand: UV Clear alone carries 42,034 reviews and the brand claims #1 dermatologist-recommended status.",Medium
+ad_priority_multiplier,EltaMD (USA),1.1,"1.05-1.10 - skin health is a named growth engine, with clinical-proof storytelling featured in Q2 2026 investor materials.",Medium
+sku_count,PCA SKIN (USA),70,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,PCA SKIN (USA),2.8,2.80 - professional peels and skincare at $26.99-$161 per unit.,Medium
+distribution_breadth,PCA SKIN (USA),0.55,0.55 US / 0.40 Canada - esthetician channel plus Target in the US; only 3 products on walmart.ca plus authorized professional e-tailers in Canada.,Medium
+velocity_index,PCA SKIN (USA),1.0,0.80-1.00 - more than 1 million peels performed annually but a thin consumer review base (11 reviews on walmart.ca).,Medium
+ad_priority_multiplier,PCA SKIN (USA),1.0,0.95-1.00 - featured in Q2 2026 materials (MGF Age Renewal Cream) but supported through professional channels rather than mass media.,Medium
+sku_count,Filorga (USA),5,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Filorga (USA),3.0,3.00 - the highest price index in the portfolio; French anti-ageing skincare acquired for $1.7B.,Medium
+distribution_breadth,Filorga (USA),0.15,"0.15 US / 0.55 Canada - us.filorga.com has stopped processing orders and redirects to a third-party e-tailer, while Canada has DTC (65 products) plus 39 products at Walmart Canada.",Medium
+velocity_index,Filorga (USA),0.4,0.40 US / 0.85 Canada - US availability disruption suppresses turn; Canadian ratings are 4.6-4.7.,Medium
+ad_priority_multiplier,Filorga (USA),0.4,"0.40 US / 0.80 Canada - the earnings skin-health narrative centres on EltaMD and PCA SKIN, so Filorga support is maintenance-level, concentrated where distribution works.",Medium
+sku_count,Palmolive (USA),40,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Palmolive (USA),0.9,0.90 - value dish liquid at $0.97-$29.99 (US multipacks) and CAD $4.99-$5.79 (Canada).,Medium
+distribution_breadth,Palmolive (USA),1.0,"1.00 US / 0.90 Canada - full grocery, mass and club distribution in the US; Walmart, Well.ca and Loblaw banners in Canada.",Medium
+velocity_index,Palmolive (USA),1.3,"1.15-1.30 - very high replenishment turn with review counts up to 9,026 on US listings.",Medium
+ad_priority_multiplier,Palmolive (USA),1.0,"0.95-1.00 - Dish E-Z Pump was a named Q1 2026 division launch, so support is at portfolio-average intensity.",Medium
+sku_count,Fabuloso (USA),45,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Fabuloso (USA),0.95,0.95 - value multi-purpose cleaner at $3.47-$13.61.,Medium
+distribution_breadth,Fabuloso (USA),1.0,"1.00 US / 0.75 Canada - CPSC recall documentation names Walmart, Dollar General, Family Dollar, Home Depot, Sam's Club and Amazon as US channels; Canada is Walmart and Loblaw banners.",Medium
+velocity_index,Fabuloso (USA),1.45,"1.45 US / 1.15 Canada - the highest velocity index assigned: company-stated #1 US all-purpose pour cleaner with review counts to 17,498.",Medium
+ad_priority_multiplier,Fabuloso (USA),1.25,1.15-1.25 - a 2026 360 platform ('Make Your World More Fabuloso') plus telenovela creative on Hulu makes Fabuloso the most media-active home-care brand.,Medium
+sku_count,Suavitel (USA),30,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Suavitel (USA),0.85,0.85 - value fabric conditioner at $2.97-$18.19 with 100 fl oz at $8.97.,Medium
+distribution_breadth,Suavitel (USA),0.9,0.90 US / 0.55 Canada - broad US grocery and mass distribution; only 6 SKUs listed on walmart.ca.,Medium
+velocity_index,Suavitel (USA),1.2,"1.20 - consistently high ratings (4.5-4.8 US, 4.63-4.84 Canada) on a high-repurchase category.",Medium
+ad_priority_multiplier,Suavitel (USA),1.1,"0.90-1.10 - Suavitel Complete fabric refresher spray is a named 2026 innovation, so support is above the home-care tail.",Medium
+sku_count,Ajax (USA),20,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Ajax (USA),0.6,0.60 US / 0.70 Canada - value cleaner; the Canadian multi-purpose SKU sells at CAD $7.99 while US Axion/Ajax dish sits near $1.99.,Medium
+distribution_breadth,Ajax (USA),0.6,0.60 - Kroger banners and Walmart in the US; Walmart Canada and Amazon.ca in Canada.,Medium
+velocity_index,Ajax (USA),0.7,0.70 - low-visibility value brand with no ratings displayed on retailer brand pages.,Medium
+ad_priority_multiplier,Ajax (USA),0.5,0.50 - no 2026 Ajax-specific innovation named; home-care innovation is concentrated on Fabuloso and Suavitel.,Medium
+sku_count,Murphy Oil Soap (USA),10,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Murphy Oil Soap (USA),1.1,"1.10 - specialty wood cleaner priced above general-purpose cleaners, including a 4.3L B2B pack at Uline.ca.",Medium
+distribution_breadth,Murphy Oil Soap (USA),0.55,"0.55 US / 0.60 Canada - grocery plus hardware (Home Depot Canada) and B2B (Uline) distribution, but not a mass staple.",Medium
+velocity_index,Murphy Oil Soap (USA),0.65,0.60-0.65 - occasional-use specialty product with no ratings displayed on retailer pages.,Medium
+ad_priority_multiplier,Murphy Oil Soap (USA),0.45,0.40-0.45 - no 2026 activity found in earnings or trade sources.,Medium
+sku_count,Axion (USA),3,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Axion (USA),0.55,"0.55 - value dish soap at $1.99 for 21.6 fl oz in Kroger-banner grocery (the imported marketplace bar at $12.92 is treated as a pricing distortion, not a shelf price).",Medium
+distribution_breadth,Axion (USA),0.1,0.10 - a handful of Kroger-banner listings plus third-party import SKUs; the narrowest distribution of any included brand.,Medium
+velocity_index,Axion (USA),0.4,0.40 - no meaningful US sentiment base and negligible shelf presence.,Medium
+ad_priority_multiplier,Axion (USA),0.2,0.20 - no North America marketing activity; core markets are Latin America.,Medium
+sku_count,Hill's Science Diet (USA),400,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Science Diet (USA),1.4,1.40 - science-led premium pet food priced above grocery brands but below therapeutic diets.,Medium
+distribution_breadth,Hill's Science Diet (USA),0.95,"0.95 US / 0.85 Canada - Chewy, Petco, PetSmart, Amazon, grocery and vet clinics in the US; PetSmart Canada (208 listings) and vets in Canada.",Medium
+velocity_index,Hill's Science Diet (USA),1.2,"1.10-1.20 - the largest Hill's line by volume, though Science Diet dog declined in Q2 2026.",Medium
+ad_priority_multiplier,Hill's Science Diet (USA),1.15,1.10-1.15 - Hill's ran 70% of US media through a data clean room and is presenting sponsor of Clear The Shelters 2026.,Medium
+sku_count,Hill's Prescription Diet (USA),250,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Prescription Diet (USA),1.9,"1.90 - therapeutic diets at $12.49-$144.99, the highest pet price tier.",Medium
+distribution_breadth,Hill's Prescription Diet (USA),0.8,"0.80 US / 0.70 Canada - vet clinics plus Chewy, Petco and PetSmart Canada; prescription authorization narrows the door count.",Medium
+velocity_index,Hill's Prescription Diet (USA),1.15,1.05-1.15 - management calls the therapeutic business the growth engine within Hill's.,Medium
+ad_priority_multiplier,Hill's Prescription Diet (USA),1.1,"1.05-1.10 - the July 2026 'Try Again' campaign targets veterinary professionals across Reddit, TikTok, AI search and YouTube.",Medium
+sku_count,Hill's Bioactive Recipe (USA),25,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Bioactive Recipe (USA),1.6,1.60 - functional/bioactive positioning priced above Science Diet.,Medium
+distribution_breadth,Hill's Bioactive Recipe (USA),0.35,0.35 - Chewy and the veterinary channel only; absent from Canadian listings.,Medium
+velocity_index,Hill's Bioactive Recipe (USA),0.55,"0.55 - low visibility, with no presence in Hill's 2026 launch communications.",Medium
+ad_priority_multiplier,Hill's Bioactive Recipe (USA),0.4,0.40 - not featured in 2026 innovation disclosures.,Medium
+sku_count,Hill's Healthy Advantage (USA),20,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Healthy Advantage (USA),1.5,1.50 - vet-channel wellness food priced between Science Diet and therapeutic diets.,Medium
+distribution_breadth,Hill's Healthy Advantage (USA),0.3,0.30 - vet clinics plus a Chewy listing; the narrowest Hill's distribution.,Medium
+velocity_index,Hill's Healthy Advantage (USA),0.5,0.50 - no consumer review base surfaced in the research.,Medium
+ad_priority_multiplier,Hill's Healthy Advantage (USA),0.35,0.35 - no marketing activity disclosed.,Medium
+sku_count,Prime100 (USA),10,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Prime100 (USA),2.2,2.20 - fresh single-protein rolls at a premium to dry pet food.,Medium
+distribution_breadth,Prime100 (USA),0.15,0.15 - select pet-specialty retailers in the north-east region plus DTC; salmon production is temporarily paused.,Medium
+velocity_index,Prime100 (USA),0.6,0.60 - early-stage US ramp; the acquisition added just 0.3% to FY2025 reported volume.,Medium
+ad_priority_multiplier,Prime100 (USA),0.5,0.50 - investment is going into capability (it is the platform for Hill's US fresh entry) rather than consumer media.,Medium
+sku_count,Colgate (Canada),470,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate (Canada),1.0,"Index 1.00 by definition: Colgate is the category benchmark, with mass shelf prices of $1.99-$7.99 at Target and CAD $0.98-$5.97 at Walmart Canada.",Medium
+distribution_breadth,Colgate (Canada),1.0,"1.00 - the only brand in the portfolio present at every tracked retailer (Walmart, Target, CVS, Amazon, DTC in the US; Walmart Canada, Well.ca, Amazon.ca in Canada).",Medium
+velocity_index,Colgate (Canada),1.25,"1.25-1.30 - highest turn in the portfolio: reported 31.9% US toothpaste and 43.4% US manual toothbrush value share, and review counts up to 2,392 on a single Canadian brand page.",Medium
+ad_priority_multiplier,Colgate (Canada),1.25,1.25-1.30 - management named North America oral care as the priority for stepped-up advertising and premium 2026/2027 innovation.,Medium
+sku_count,Colgate Total (Canada),76,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Total (Canada),1.1,1.10 - therapeutic tier priced above the Colgate core line at Target ($1.99-$7.99 range top end).,Medium
+distribution_breadth,Colgate Total (Canada),1.0,"1.00 - full national distribution in both markets, including a CDA seal listing in Canada.",Medium
+velocity_index,Colgate Total (Canada),1.05,1.05 - historically the largest single Colgate portfolio by SKU count (163 US SKUs) but currently rebuilding share after the reformulation issue.,Medium
+ad_priority_multiplier,Colgate Total (Canada),1.25,1.25-1.30 - Total carries the flagship national creative ('One Step Ahead') and is the named share-recovery priority.,Medium
+sku_count,Colgate Optic White (Canada),65,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Optic White (Canada),1.35,1.35 - premium whitening tier; Pro Series is the most advanced (and highest-priced) formula in the line.,Medium
+distribution_breadth,Colgate Optic White (Canada),0.95,0.95 - broad mass distribution but slightly narrower than the core line in drug/value channels.,Medium
+velocity_index,Colgate Optic White (Canada),1.1,1.10 - whitening is the stated share-recovery vehicle and the second-largest Colgate portfolio by SKU count (132 US SKUs).,Medium
+ad_priority_multiplier,Colgate Optic White (Canada),1.3,1.30-1.35 - 'The Science of WOW' campaign with 100+ assets plus the Purple and Vitamin C launches make this the most heavily supported sub-brand.,Medium
+sku_count,Colgate Optic White Renewal (Canada),10,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Optic White Renewal (Canada),1.6,1.60 - premium enamel-plus-whitening tier including 3% hydrogen peroxide pens with 35 nightly treatments.,Medium
+distribution_breadth,Colgate Optic White Renewal (Canada),0.7,"0.70 - Canada-only active line (the standalone US Renewal line is withdrawn), carried at Walmart Canada and colgate.com/en-ca.",Medium
+velocity_index,Colgate Optic White Renewal (Canada),0.85,0.85 - premium price point limits turn relative to core toothpaste.,Medium
+ad_priority_multiplier,Colgate Optic White Renewal (Canada),1.0,1.00 - supported as a Canadian premium trade-up but not a named global priority.,Medium
+sku_count,Colgate Max Fresh (Canada),33,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Max Fresh (Canada),0.95,0.95 - freshness workhorse priced at or just below the Colgate core line.,Medium
+distribution_breadth,Colgate Max Fresh (Canada),0.9,0.90 - broad mass and drug distribution; fewer professional or premium doors.,Medium
+velocity_index,Colgate Max Fresh (Canada),1.0,1.00 - steady mainstream turn with no adverse coverage; 66 US and 33 Canadian SKUs.,Medium
+ad_priority_multiplier,Colgate Max Fresh (Canada),0.85,0.85-0.90 - a value-tier defence line rather than a named 2026 investment priority.,Medium
+sku_count,Colgate Sensitive Pro-Relief (Canada),33,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate Sensitive Pro-Relief (Canada),1.45,1.45 - CAD $6.99 at Well.ca versus CAD $0.98-$5.97 for the core Canadian Colgate range.,Medium
+distribution_breadth,Colgate Sensitive Pro-Relief (Canada),0.85,"0.85 - Well.ca, Walmart Canada and drug distribution with a CDA seal listing.",Medium
+velocity_index,Colgate Sensitive Pro-Relief (Canada),1.0,1.00 - solid therapeutic turn; 33 Canadian SKUs in the portfolio.,Medium
+ad_priority_multiplier,Colgate Sensitive Pro-Relief (Canada),1.0,1.00 - premium therapeutic tier inside the North America innovation slate.,Medium
+sku_count,Colgate PreviDent (Canada),13,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate PreviDent (Canada),2.2,"2.20 - prescription 5000ppm product at roughly 4x the fluoride of OTC toothpaste, dispensed at Rx pricing.",Medium
+distribution_breadth,Colgate PreviDent (Canada),0.35,0.35 - dental-professional and pharmacy channels only; no open-retail listing.,Medium
+velocity_index,Colgate PreviDent (Canada),0.6,0.60 - low turn per door given prescription gating.,Medium
+ad_priority_multiplier,Colgate PreviDent (Canada),0.6,0.60 - professional-channel detailing rather than consumer media.,Medium
+sku_count,Colgate PerioGard (Canada),27,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Colgate PerioGard (Canada),1.7,"2.00 in the US (Rx chlorhexidine rinse) and 1.70 in Canada, where PerioGard/PerioGardSF is also sold as a consumer gum-health line.",Medium
+distribution_breadth,Colgate PerioGard (Canada),0.55,0.30 US / 0.55 Canada - Rx-gated in the US; the Canadian line reaches retail and pharmacy as well as dental offices.,Medium
+velocity_index,Colgate PerioGard (Canada),0.75,0.55-0.75 - low absolute turn but rising as the launch moves through distribution.,Medium
+ad_priority_multiplier,Colgate PerioGard (Canada),0.7,"0.70 - launched 'through the profession' in 2026, so support is detailing-led, not mass media.",Medium
+sku_count,Tom's of Maine (Canada),36,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Tom's of Maine (Canada),1.3,1.30 - naturals premium at $4.47-$9.96 in the US and CAD $5.97-$11.97 in Canada versus mainstream toothpaste.,Medium
+distribution_breadth,Tom's of Maine (Canada),0.45,0.70 US / 0.45 Canada - broad US mass plus health/specialty distribution; Canada is Walmart-led and much narrower.,Medium
+velocity_index,Tom's of Maine (Canada),0.7,"0.85 US / 0.70 Canada - solid ratings (4.0-4.8, up to 1,921 reviews) but a specialty rather than mass turn rate.",Medium
+ad_priority_multiplier,Tom's of Maine (Canada),0.9,"1.05 US / 0.90 Canada - 'Never Underestimate Nature' was the brand's first campaign in three years, so support is real but modest.",Medium
+sku_count,hello (Canada),19,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,hello (Canada),1.25,"1.25 - $2.49-$14.23 at Target and CAD $5.97-$9.98 at Walmart Canada, above private label and mainstream value toothpaste.",Medium
+distribution_breadth,hello (Canada),0.4,"0.60 US / 0.40 Canada - Target/Walmart/Amazon in the US; Canada launched only in June 2025 at Shoppers, Walmart and Amazon.ca.",Medium
+velocity_index,hello (Canada),0.75,0.90 US / 0.75 Canada - high cultural velocity for a small base; trade estimate of ~$40M sales at acquisition with 15% of sales online.,Medium
+ad_priority_multiplier,hello (Canada),1.15,1.15-1.20 - influencer- and social-led investment with a named chief aura officer and the Whipped launch as a Q1 2026 North America priority.,Medium
+sku_count,Speed Stick (Canada),24,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Speed Stick (Canada),0.8,"0.80 - value men's deodorant at $4.69-$10.25 (US) and CAD $5.99-$13.49 (Canada), below premium deodorant benchmarks.",Medium
+distribution_breadth,Speed Stick (Canada),0.9,"0.95 US / 0.90 Canada - near-universal mass, drug and grocery distribution in both markets.",Medium
+velocity_index,Speed Stick (Canada),1.05,"1.05-1.10 - high-turn value staple: 4.4/5 from 1,388 ratings on the core Walmart SKU.",Medium
+ad_priority_multiplier,Speed Stick (Canada),0.85,0.85-0.90 - no named 2026 campaign; personal care sits inside the general price-gap and advertising step-up.,Medium
+sku_count,Lady Speed Stick (Canada),19,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Lady Speed Stick (Canada),0.75,"0.75 - the lowest-priced deodorant line in the portfolio, from CAD $3.77.",Medium
+distribution_breadth,Lady Speed Stick (Canada),0.8,0.80 - solid mass distribution but a narrower assortment than the men's line (19-20 SKUs per market).,Medium
+velocity_index,Lady Speed Stick (Canada),0.9,0.85-0.90 - steady value turn with no adverse coverage and no campaign lift.,Medium
+ad_priority_multiplier,Lady Speed Stick (Canada),0.6,0.60 - no dedicated 2025-2026 campaign found; maintained rather than invested.,Medium
+sku_count,Softsoap (Canada),44,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Softsoap (Canada),0.85,0.85 - value hand-wash pricing at $2.48-$12.12 (US) and CAD $4.28-$10.28 (Canada).,Medium
+distribution_breadth,Softsoap (Canada),0.9,"1.00 US / 0.90 Canada - the widest personal-care distribution in the portfolio, with 153 US SKUs.",Medium
+velocity_index,Softsoap (Canada),1.1,"1.10-1.25 - very high replenishment turn; ratings of 4.4-4.8 across review counts up to 6,575.",Medium
+ad_priority_multiplier,Softsoap (Canada),0.9,"0.90-0.95 - supported through sustainability innovation (tablets, aluminium bottles) rather than heavy paid media.",Medium
+sku_count,Irish Spring (Canada),21,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Irish Spring (Canada),0.9,0.90 - mainstream bar-soap and body-wash pricing at CAD $5.97-$10.48.,Medium
+distribution_breadth,Irish Spring (Canada),0.85,0.95 US / 0.85 Canada - broad mass and drug distribution; the US brand site was cookie-gated but trade press confirms national scale.,Medium
+velocity_index,Irish Spring (Canada),1.3,"1.15 US / 1.30 Canada - very high turn, with individual Canadian SKUs carrying up to 4,736 reviews.",Medium
+ad_priority_multiplier,Irish Spring (Canada),1.1,"1.10-1.20 - the brand bought its first Super Bowl ad (reported $6.5M per unit) behind a full relaunch, the clearest paid-media signal in personal care.",Medium
+sku_count,Skin Bracer (Canada),1,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Skin Bracer (Canada),0.7,"0.70 - heritage aftershave at CAD $10.99 for 100ml, a small-basket value item.",Medium
+distribution_breadth,Skin Bracer (Canada),0.25,"0.25-0.30 - CVS, Amazon and independent grocery only, with forum chatter about discontinuation indicating patchy shelf presence.",Medium
+velocity_index,Skin Bracer (Canada),0.5,0.50-0.55 - loyal but small base (4.8/5 from 89 CVS reviews; 4.7/5 from 804 Amazon.ca ratings).,Medium
+ad_priority_multiplier,Skin Bracer (Canada),0.3,0.30 - no company marketing activity found in fetched sources.,Medium
+sku_count,EltaMD (Canada),30,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,EltaMD (Canada),2.6,"2.60 - professional sunscreen at CAD $68-$82 per unit, roughly 3x mass sun care.",Medium
+distribution_breadth,EltaMD (Canada),0.55,"0.75 US / 0.55 Canada - physician offices, DTC, Dermstore and 15 authorized online retailers in the US; Amazon.ca plus professional e-tailers in Canada.",Medium
+velocity_index,EltaMD (Canada),1.3,"1.30-1.40 - exceptional turn for a premium brand: UV Clear alone carries 42,034 reviews and the brand claims #1 dermatologist-recommended status.",Medium
+ad_priority_multiplier,EltaMD (Canada),1.05,"1.05-1.10 - skin health is a named growth engine, with clinical-proof storytelling featured in Q2 2026 investor materials.",Medium
+sku_count,PCA SKIN (Canada),36,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,PCA SKIN (Canada),2.8,2.80 - professional peels and skincare at $26.99-$161 per unit.,Medium
+distribution_breadth,PCA SKIN (Canada),0.4,0.55 US / 0.40 Canada - esthetician channel plus Target in the US; only 3 products on walmart.ca plus authorized professional e-tailers in Canada.,Medium
+velocity_index,PCA SKIN (Canada),0.8,0.80-1.00 - more than 1 million peels performed annually but a thin consumer review base (11 reviews on walmart.ca).,Medium
+ad_priority_multiplier,PCA SKIN (Canada),0.95,0.95-1.00 - featured in Q2 2026 materials (MGF Age Renewal Cream) but supported through professional channels rather than mass media.,Medium
+sku_count,Filorga (Canada),47,Empirical count of distinct rows in the Sheet 2 SKU inventory.,High
+price_index,Filorga (Canada),3.0,3.00 - the highest price index in the portfolio; French anti-ageing skincare acquired for $1.7B.,Medium
+distribution_breadth,Filorga (Canada),0.55,"0.15 US / 0.55 Canada - us.filorga.com has stopped processing orders and redirects to a third-party e-tailer, while Canada has DTC (65 products) plus 39 products at Walmart Canada.",Medium
+velocity_index,Filorga (Canada),0.85,0.40 US / 0.85 Canada - US availability disruption suppresses turn; Canadian ratings are 4.6-4.7.,Medium
+ad_priority_multiplier,Filorga (Canada),0.8,"0.40 US / 0.80 Canada - the earnings skin-health narrative centres on EltaMD and PCA SKIN, so Filorga support is maintenance-level, concentrated where distribution works.",Medium
+sku_count,Palmolive (Canada),12,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Palmolive (Canada),0.9,0.90 - value dish liquid at $0.97-$29.99 (US multipacks) and CAD $4.99-$5.79 (Canada).,Medium
+distribution_breadth,Palmolive (Canada),0.9,"1.00 US / 0.90 Canada - full grocery, mass and club distribution in the US; Walmart, Well.ca and Loblaw banners in Canada.",Medium
+velocity_index,Palmolive (Canada),1.15,"1.15-1.30 - very high replenishment turn with review counts up to 9,026 on US listings.",Medium
+ad_priority_multiplier,Palmolive (Canada),0.95,"0.95-1.00 - Dish E-Z Pump was a named Q1 2026 division launch, so support is at portfolio-average intensity.",Medium
+sku_count,Fabuloso (Canada),10,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Fabuloso (Canada),0.95,0.95 - value multi-purpose cleaner at $3.47-$13.61.,Medium
+distribution_breadth,Fabuloso (Canada),0.75,"1.00 US / 0.75 Canada - CPSC recall documentation names Walmart, Dollar General, Family Dollar, Home Depot, Sam's Club and Amazon as US channels; Canada is Walmart and Loblaw banners.",Medium
+velocity_index,Fabuloso (Canada),1.15,"1.45 US / 1.15 Canada - the highest velocity index assigned: company-stated #1 US all-purpose pour cleaner with review counts to 17,498.",Medium
+ad_priority_multiplier,Fabuloso (Canada),1.15,1.15-1.25 - a 2026 360 platform ('Make Your World More Fabuloso') plus telenovela creative on Hulu makes Fabuloso the most media-active home-care brand.,Medium
+sku_count,Suavitel (Canada),6,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Suavitel (Canada),0.85,0.85 - value fabric conditioner at $2.97-$18.19 with 100 fl oz at $8.97.,Medium
+distribution_breadth,Suavitel (Canada),0.55,0.90 US / 0.55 Canada - broad US grocery and mass distribution; only 6 SKUs listed on walmart.ca.,Medium
+velocity_index,Suavitel (Canada),1.2,"1.20 - consistently high ratings (4.5-4.8 US, 4.63-4.84 Canada) on a high-repurchase category.",Medium
+ad_priority_multiplier,Suavitel (Canada),0.9,"0.90-1.10 - Suavitel Complete fabric refresher spray is a named 2026 innovation, so support is above the home-care tail.",Medium
+sku_count,Ajax (Canada),8,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Ajax (Canada),0.7,0.60 US / 0.70 Canada - value cleaner; the Canadian multi-purpose SKU sells at CAD $7.99 while US Axion/Ajax dish sits near $1.99.,Medium
+distribution_breadth,Ajax (Canada),0.6,0.60 - Kroger banners and Walmart in the US; Walmart Canada and Amazon.ca in Canada.,Medium
+velocity_index,Ajax (Canada),0.7,0.70 - low-visibility value brand with no ratings displayed on retailer brand pages.,Medium
+ad_priority_multiplier,Ajax (Canada),0.5,0.50 - no 2026 Ajax-specific innovation named; home-care innovation is concentrated on Fabuloso and Suavitel.,Medium
+sku_count,Murphy Oil Soap (Canada),5,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Murphy Oil Soap (Canada),1.1,"1.10 - specialty wood cleaner priced above general-purpose cleaners, including a 4.3L B2B pack at Uline.ca.",Medium
+distribution_breadth,Murphy Oil Soap (Canada),0.6,"0.55 US / 0.60 Canada - grocery plus hardware (Home Depot Canada) and B2B (Uline) distribution, but not a mass staple.",Medium
+velocity_index,Murphy Oil Soap (Canada),0.6,0.60-0.65 - occasional-use specialty product with no ratings displayed on retailer pages.,Medium
+ad_priority_multiplier,Murphy Oil Soap (Canada),0.4,0.40-0.45 - no 2026 activity found in earnings or trade sources.,Medium
+sku_count,Arctic Power (Canada),12,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Arctic Power (Canada),0.8,"0.80 - value cold-water detergent at CAD $7.97-$12.97, including 88-load packs at CAD $9.29.",Medium
+distribution_breadth,Arctic Power (Canada),0.8,"0.80 - Walmart Canada and Canadian Tire, the two national channels for the category.",Medium
+velocity_index,Arctic Power (Canada),1.2,1.20 - laundry detergent is a high-turn category and the brand is flagged 'Top Rated' at Canadian Tire with 4.1-5.0 Walmart ratings.,Medium
+ad_priority_multiplier,Arctic Power (Canada),0.8,0.80 - no brand-specific 2026 disclosure; Canada sits inside the North America division agenda.,Medium
+sku_count,Fleecy (Canada),10,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Fleecy (Canada),0.75,0.75 - value fabric softener and dryer sheets at CAD $5.97-$12.97.,Medium
+distribution_breadth,Fleecy (Canada),0.7,0.70 - Walmart Canada distribution confirmed; no US retail listing.,Medium
+velocity_index,Fleecy (Canada),1.0,1.00 - routine replenishment turn; no aggregate rating displayed on the brand page.,Medium
+ad_priority_multiplier,Fleecy (Canada),0.6,0.60 - no 2026 brand-specific disclosure found.,Medium
+sku_count,Hill's Science Diet (Canada),208,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Science Diet (Canada),1.4,1.40 - science-led premium pet food priced above grocery brands but below therapeutic diets.,Medium
+distribution_breadth,Hill's Science Diet (Canada),0.85,"0.95 US / 0.85 Canada - Chewy, Petco, PetSmart, Amazon, grocery and vet clinics in the US; PetSmart Canada (208 listings) and vets in Canada.",Medium
+velocity_index,Hill's Science Diet (Canada),1.1,"1.10-1.20 - the largest Hill's line by volume, though Science Diet dog declined in Q2 2026.",Medium
+ad_priority_multiplier,Hill's Science Diet (Canada),1.1,1.10-1.15 - Hill's ran 70% of US media through a data clean room and is presenting sponsor of Clear The Shelters 2026.,Medium
+sku_count,Hill's Prescription Diet (Canada),150,Assortment estimate from the retailer brand page cited in the row's primary_sources (home care and pet nutrition are not covered by the Sheet 2 SKU inventories).,Low
+price_index,Hill's Prescription Diet (Canada),1.9,"1.90 - therapeutic diets at $12.49-$144.99, the highest pet price tier.",Medium
+distribution_breadth,Hill's Prescription Diet (Canada),0.7,"0.80 US / 0.70 Canada - vet clinics plus Chewy, Petco and PetSmart Canada; prescription authorization narrows the door count.",Medium
+velocity_index,Hill's Prescription Diet (Canada),1.05,1.05-1.15 - management calls the therapeutic business the growth engine within Hill's.,Medium
+ad_priority_multiplier,Hill's Prescription Diet (Canada),1.05,"1.05-1.10 - the July 2026 'Try Again' campaign targets veterinary professionals across Reddit, TikTok, AI search and YouTube.",Medium

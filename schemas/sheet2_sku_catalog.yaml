@@ -1,0 +1,58 @@
+# Sheet 2 — CPG Product Library & In-Market SKU Repository
+# Canonical schema. Client-agnostic. Do not reorder columns between runs.
+schema_version: "1.0"
+sheet_name: "SKU Catalog"
+grain: "one row per product x pack_size x geo_market"
+dedupe_key: [geo_market, brand_name, product_name, pack_size]
+columns:
+  - name: sku_record_id
+    type: string
+    desc: "Stable key: {CLIENT_SLUG}-{GEO}-{BRAND_SLUG}-{seq}."
+  - name: geo_market
+    type: enum
+    values: [USA, Canada]
+  - name: brand_name
+    type: string
+    desc: "Must join to Sheet 1 brand_name."
+  - name: category
+    type: string
+  - name: sub_category
+    type: string
+  - name: product_portfolio
+    type: string
+    desc: "Sub-brand line, e.g. 'Colgate Optic White'."
+  - name: product_name
+    type: string
+  - name: product_description
+    type: string
+  - name: variant_flavor_scent
+    type: string
+  - name: pack_size
+    type: string
+    desc: "As merchandised, e.g. '4.0 oz', '3 ct', '2 x 5.1 oz'."
+  - name: form_factor
+    type: string
+  - name: upc_or_gtin
+    type: string
+    desc: "12-digit UPC-A or 14-digit GTIN. Never fabricate — 'n.a.' if unexposed."
+  - name: retailer_sku_id
+    type: string
+    desc: "Walmart item ID / Target TCIN / Amazon ASIN / Loblaws article no."
+  - name: retailer
+    type: string
+  - name: product_url
+    type: url
+  - name: source_type
+    type: enum
+    values: ["Brand site", "Retailer listing", "UPC database"]
+  - name: confidence
+    type: enum
+    values: [High, Medium, Low]
+  - name: date_collected
+    type: date
+
+validation_rules:
+  - "upc_or_gtin must match ^\\d{12}$|^\\d{14}$|^n\\.a\\.$"
+  - "every brand_name must exist in Sheet 1 for the same geo_market"
+  - "no duplicate rows on dedupe_key"
+  - "product_url must be non-empty and resolve to the retailer/brand named in `retailer`"
